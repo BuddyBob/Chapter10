@@ -4,7 +4,7 @@
 \usepackage[most]{tcolorbox}
 \usepackage{hyperref}
 \hypersetup{
-  linkbordercolor={1 1 1},  % white border (RGB 1 1 1)
+  linkbordercolor={1 1 1},
   pdfborder={0 0 0},
   filecolor=magenta,
   pdfpagemode=FullScreen
@@ -24,14 +24,14 @@
 \title{\textbf{Calculus BC Scrapbook: Chapter 10 – Infinite Sequences and Series}}
 \author{
   Thavas Antonio\\
-  \small\href{https://github.com/BuddyBob/Chapter10}{Chapter 10 GitHub Repository} % Assumed new repo
+  \small\href{https://github.com/BuddyBob/Chapter10}{Chapter 10 GitHub Repository}
 }
-\date{May 2025} % Or current date if preferred
+\date{May 2025}
 
 \begin{document}
 
 \maketitle
-\tableofcontents % This will list sections you create later in this chapter
+\tableofcontents
 \newpage
 
 \section{Introduction to the Infinite!}
@@ -44,7 +44,7 @@ Key topics we'll explore include:
     \item How to sum up an infinite list of numbers and determine if that sum is a finite value.
     \item Well look at the (Integral Test, Comparison Tests, Ratio Test, and more!) to better analyze behaviour
     \item Alternating series.
-    \item Taylor and Maclaurin series something our class found fairly tricky. Helps us approximate functions. 
+    \item Taylor and Maclaurin series something our class found fairly tricky. Helps us approximate functions.
 \end{itemize}
 
 \medskip
@@ -56,7 +56,7 @@ Key topics we'll explore include:
   \item \textbf{Answer} Detailed solutions for the examples
 \end{itemize}
 
-Goal is to create a revisable guide for previously learned concepts. 
+Goal is to create a revisable guide for previously learned concepts.
 
 \vspace{10pt}
 
@@ -64,7 +64,7 @@ Goal is to create a revisable guide for previously learned concepts.
 \begin{tcolorbox}[title=Chapter 10 Road-Map: All 15 Infinite-Series Big Ideas,
                   colback=gray!8, colframe=purple!70!black]
 
-\begin{enumerate}[itemsep=3pt, topsep=2pt] 
+\begin{enumerate}[itemsep=3pt, topsep=2pt]
   \item 10.1  Defining Convergent \& Divergent Infinite Series
   \item 10.2  Working with Geometric Series
 \end{enumerate}
@@ -73,7 +73,6 @@ Goal is to create a revisable guide for previously learned concepts.
 \newpage
 
 
-%==================== 10.1 Concept Page ====================
 \section{10.1 Defining Convergent \& Divergent Infinite Series}
 
 \begin{tcolorbox}[colback=gray!6!white,colframe=gray!60!gray,
@@ -84,23 +83,23 @@ Given an infinite series
 \]
 
 \begin{minipage}{0.48\linewidth}
-\begin{tcolorbox}[colback=white] 
+\begin{tcolorbox}[colback=white]
 \centering
 \begin{tikzpicture}[scale=0.5]
-  % bucket
+
   \draw[thick] (0,0) rectangle (4,3.5);
-  % water bars
+
   \foreach \h/\c in {0.5/blue!15,1/blue!20,1.5/blue!30,1.8/blue!40,2.05/blue!50,2.20/blue!60,2.30/blue!70} {
     \fill[\c] (0,\h) rectangle (4,\h+0.15);
   }
-  % label
+
   \node at (2,-0.8) {\small \textbf{Convergent:} bucket fills to a limit};
 \end{tikzpicture}
 \end{tcolorbox}
 \end{minipage}
 \hfill
 \begin{minipage}{0.48\linewidth}
-\begin{tcolorbox}[colback=white] 
+\begin{tcolorbox}[colback=white]
 \centering
 \begin{tikzpicture}[scale=0.6]
   \foreach \n in {0,1,...,7}{
@@ -116,58 +115,54 @@ Hopefully pretty understandable and intuitive given these diagrams.
 \vspace{6pt}
 
 \begin{tcolorbox}[colback=yellow!10,colframe=gray,title=(nth-term test)]
-If \(\displaystyle\lim_{n\to\infty} a_n \neq 0\),  
-then \(\sum a_n\) \emph{must} diverge.  
+If \(\displaystyle\lim_{n\to\infty} a_n \neq 0\),
+then \(\sum a_n\) \emph{must} diverge.
 \end{tcolorbox}
 
 \subsection*{Worked Mini-Examples (with extra commentary)}
 
 \begin{enumerate}[label=\textbf{\arabic*.},topsep=4pt,itemsep=10pt]
 
-  \item \textbf{Geometric}  
+  \item \textbf{Geometric}
         \[
         \sum_{n=0}^{\infty}\Bigl(\tfrac13\Bigr)^{\!n}
         \]
         \begin{itemize}[itemsep=2pt]
           \item Note! The geometric with ratio \(r=\tfrac13\).
           \item Rule: a geometric series converges if \(|r|<1\).
-          \item Plug \(r\) into the sum formula \(\dfrac{a}{1-r}\)  
+          \item Plug \(r\) into the sum formula \(\dfrac{a}{1-r}\)
                 (here \(a=1\) when \(n=0\)):
                 \[
                   S = \frac{1}{1-\tfrac13} = \frac32.
                 \]
-          \item I think about it like balls bouncing into a bucket where each bounce gets smaller 1/3 of the last height. 
+          \item I think about it like balls bouncing into a bucket where each bounce gets smaller 1/3 of the last height.
         \end{itemize}
 
-  % ---------- 2 ----------
-  \item \textbf{Harmonic Heartbreak}  
+  \item \textbf{Harmonic Heartbreak}
         \[
         \sum_{n=1}^{\infty}\frac1n
         \]
         \begin{itemize}[itemsep=2pt]
-          \item The terms \(\tfrac1n\) do go to \(0\) but like really slow.  
-          \item It’s a \(p\)-series with \(p=1\). Remember that a \(p\)-series converges only if \(p>1\).  
+          \item The terms \(\tfrac1n\) do go to \(0\) but like really slow.
+          \item It’s a \(p\)-series with \(p=1\). Remember that a \(p\)-series converges only if \(p>1\).
         \end{itemize}
 
 \end{enumerate}
 
-% ---------- Quick-Check ----------
 \begin{tcolorbox}[colback=green!5!white,colframe=green!50!black,title=Quick-Check]
 Does \( \displaystyle\sum_{n=1}^{\infty}\frac{1}{n^{2}} \) converge? (Hint: \(p>1\).)
 
 \begin{tcolorbox}[colback=white, sharp corners, boxrule=0pt, title=Spoiler – click to reveal, breakable]
-Yes. It’s a \(p\)-series with \(p=2>1\), so it converges.  
+Yes. It’s a \(p\)-series with \(p=2>1\), so it converges.
 \end{tcolorbox}
 \end{tcolorbox}
 
 \subsection*{Take-Away}
-Convergence is just your partial sums calming down.  
-When in doubt think “Do the terms go to zero? Which test applies?”  
+Convergence is just your partial sums calming down.
+When in doubt think “Do the terms go to zero? Which test applies?”
 
- % - - - -- -- - - - - - - - 10.2  - - - - - - - - -- %
 \newpage
 
-%==================== 10.2 Working with Geometric Series ====================
 \section{10.2 Working with Geometric Series}
 
 \begin{tcolorbox}[colback=gray!10!white,colframe=gray!75!black,title=What's a Geometric Series Anyway?]
@@ -191,8 +186,8 @@ Here, \(a\) is just your \textbf{starting number}.
 \subsection*{Why does this \(|r|<1\) trick work?}
 Think about it:
 \begin{itemize}
-    \item If \(r\) is small (like \(\frac{1}{2}\)), each new number you add (\(ar, ar^2, \dots\)) gets smaller and smaller. Eventually, they become so tiny they barely make a dent in the total sum. 
-    \item If \(r\) is big (like 2 or -3), the numbers you add keep getting bigger. The sum never settles. 
+    \item If \(r\) is small (like \(\frac{1}{2}\)), each new number you add (\(ar, ar^2, \dots\)) gets smaller and smaller. Eventually, they become so tiny they barely make a dent in the total sum.
+    \item If \(r\) is big (like 2 or -3), the numbers you add keep getting bigger. The sum never settles.
 \end{itemize}
 So, that little \(r\) is the actually REALLY key!
 
@@ -206,10 +201,9 @@ So, that little \(r\) is the actually REALLY key!
 \end{itemize}
 If this looks hard to remember you eventually get the hang of it like deriv rules.
 
-%------------------------------------------------------------
 \subsection*{Let's Try Some!}
 
-\begin{enumerate}[label=\textbf{\arabic*.},itemsep=15pt] % Increased itemsep for more space
+\begin{enumerate}[label=\textbf{\arabic*.},itemsep=15pt]
 
   \item \textbf{Example 1: A Converging Friend} \\
         What about this series: \(\displaystyle\sum_{n=0}^{\infty}\left(\frac{1}{4}\right)^n = 1 + \frac{1}{4} + \frac{1}{16} + \dots\)?
@@ -240,14 +234,13 @@ If this looks hard to remember you eventually get the hang of it like deriv rule
 
 
 \subsection*{Main Takeaway}
-How I remember what to do -> 
+How I remember what to do ->
 \begin{itemize}
     \item Look at \(r\). If \(|r|<1\), it adds up! Use \(S = \frac{a}{1-r}\).
     \item If \(|r| \ge 1\), it doesn't (it diverges). Don't even try to sum it.
 \end{itemize}
 
 \newpage
-%==================== 10.3 The nth Term Test: A Quick Divergence Check ================== %
 \section{10.3 The nth Term Test: A Quick Divergence Check}
 
 \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=The Main Idea: Does it Even Try to Stop?]
@@ -274,7 +267,6 @@ For a sum to have a chance to settle down (converge), the little bits you're add
     \item Always try this test first if the limit looks easy to find. It might save you a lot of work!
 \end{itemize}
 
-%------------------------------------------------------------
 \subsection*{Let's See it in Action!}
 
 \begin{enumerate}[label=\textbf{\arabic*.},itemsep=15pt]
@@ -314,13 +306,12 @@ For a sum to have a chance to settle down (converge), the little bits you're add
         \end{itemize}
 \end{enumerate}
 
-%==================== 10.4  Integral Test for Convergence ====================
 \newpage
 \section{10.4 Integral Test for Convergence}
 
 \begin{tcolorbox}[colback=gray!8,colframe=black,title=Statement of the Test]
-Let \(a_n = f(n)\) where the function \(f(x)\) is  
-\textbf{positive, continuous, and decreasing} for \(x \ge k\) (some integer \(k\)).  
+Let \(a_n = f(n)\) where the function \(f(x)\) is
+\textbf{positive, continuous, and decreasing} for \(x \ge k\) (some integer \(k\)).
 Then
 \[
 \sum_{n=k}^{\infty} a_n
@@ -338,27 +329,26 @@ have the same behaviour: they either both converge or both diverge.
 \end{enumerate}
 
 \subsection*{Interpretation}
-Treat each term \(a_n\) as the height of a unit-width rectangle.  
-If the total area under \(y=f(x)\) is finite, the stacked rectangles are finite;  
+Treat each term \(a_n\) as the height of a unit-width rectangle.
+If the total area under \(y=f(x)\) is finite, the stacked rectangles are finite;
 if the area is infinite, the sum of rectangles is infinite as well.
 
-%------------------------------------------------------------
 \subsection*{Examples}
 
 \begin{enumerate}[label=\textbf{\arabic*.},itemsep=10pt]
 
-  \item \textbf{Convergent \(p\)-series}  
-        \(\displaystyle\sum_{n=1}^{\infty}\frac{1}{n^{2}}\)  
+  \item \textbf{Convergent \(p\)-series}
+        \(\displaystyle\sum_{n=1}^{\infty}\frac{1}{n^{2}}\)
         with \(f(x)=1/x^{2}\).
 
-        Integral: \(\displaystyle\int_{1}^{\infty} x^{-2}\,dx = 1\) (finite)  
+        Integral: \(\displaystyle\int_{1}^{\infty} x^{-2}\,dx = 1\) (finite)
         \(\Rightarrow\) series converges.
 
-  \item \textbf{Divergent harmonic series}  
-        \(\displaystyle\sum_{n=1}^{\infty}\frac{1}{n}\)  
+  \item \textbf{Divergent harmonic series}
+        \(\displaystyle\sum_{n=1}^{\infty}\frac{1}{n}\)
         with \(f(x)=1/x\).
 
-        Integral: \(\displaystyle\int_{1}^{\infty} x^{-1}\,dx = \infty\)  
+        Integral: \(\displaystyle\int_{1}^{\infty} x^{-1}\,dx = \infty\)
         \(\Rightarrow\) series diverges.
 
 \end{enumerate}
@@ -370,8 +360,6 @@ if the area is infinite, the sum of rectangles is infinite as well.
   \item If the integral is difficult to evaluate, choose a different convergence test.
 \end{itemize}
 
-
-% = = = == = == == === == 10.5 = = = = = = = = = = = %
 \newpage
 \section{10.5 Harmonic Series and \(p\)-Series}
 
@@ -393,22 +381,21 @@ Using the Integral Test with \(f(x)=1/x^{p}\):
 \[
 \int_{1}^{\infty} x^{-p}\,dx
 \]
-is finite only when \(p>1\).  
+is finite only when \(p>1\).
 Thus the integral and series share the same fate.
 
-%------------------------------------------------------------
 \subsection*{Representative Examples}
 
 \begin{enumerate}[label=\textbf{\arabic*.},itemsep=8pt]
 
-  \item \textbf{Harmonic Series (\(p=1\))}  
+  \item \textbf{Harmonic Series (\(p=1\))}
         \(\displaystyle\sum_{n=1}^{\infty}\frac{1}{n}\) diverges.
 
-  \item \textbf{Typical Convergent Case (\(p=2\))}  
-        \(\displaystyle\sum_{n=1}^{\infty}\frac{1}{n^{2}}\) converges  
+  \item \textbf{Typical Convergent Case (\(p=2\))}
+        \(\displaystyle\sum_{n=1}^{\infty}\frac{1}{n^{2}}\) converges
         (value \(\pi^{2}/6\), not required for convergence).
 
-  \item \textbf{Fractional Exponent (\(p=\tfrac12\))}  
+  \item \textbf{Fractional Exponent (\(p=\tfrac12\))}
         \(\displaystyle\sum_{n=1}^{\infty}\frac{1}{\sqrt{n}}\) diverges because \(p\le1\).
 
 \end{enumerate}
@@ -420,11 +407,9 @@ Thus the integral and series share the same fate.
   \item These series often serve as benchmarks in Comparison Tests.
 \end{itemize}
 
-%==================== 10.6  Comparison Tests ====================
 \newpage
 \section{10.6  Comparison Tests for Convergence}
 
-%-------------------- Direct Comparison  ------------------------
 \begin{tcolorbox}[colback=gray!8,colframe=black,title=Direct Comparison]
 If every term of your series is \emph{smaller} than the term of a
 known convergent series, your series also converges.
@@ -433,7 +418,6 @@ If every term is \emph{larger} than the term of a known divergent series,
 your series also diverges.
 \end{tcolorbox}
 
-%-------------------- Limit Comparison  -------------------------
 \begin{tcolorbox}[colback=gray!8,colframe=black,title=Limit Comparison]
 Compare the long-run “shape” of two series:
 
@@ -448,28 +432,26 @@ If that happens, the two series share the same fate.
 
 \begin{itemize}[itemsep=10pt]
 
-  \item \textbf{Direct:}  
+  \item \textbf{Direct:}
         Terms like \(\dfrac{1}{n^{2}+1}\) are always less than
-        \(\dfrac{1}{n^{2}}\).  
+        \(\dfrac{1}{n^{2}}\).
         Since the \(1/n^{2}\) series converges, so does the smaller one.
 
-  \item \textbf{Direct (divergence):}  
-        \(\dfrac{1}{\sqrt{n}+1}\) is always larger than half of \(\dfrac{1}{\sqrt{n}}\).  
+  \item \textbf{Direct (divergence):}
+        \(\dfrac{1}{\sqrt{n}+1}\) is always larger than half of \(\dfrac{1}{\sqrt{n}}\).
         The \(1/\sqrt{n}\) series diverges, so the larger series diverges too.
 
-  \item \textbf{Limit:}  
-        The terms \(\dfrac{n}{n^{3}+4}\) behave like \(\dfrac{1}{n^{2}}\) for large \(n\).  
+  \item \textbf{Limit:}
+        The terms \(\dfrac{n}{n^{3}+4}\) behave like \(\dfrac{1}{n^{2}}\) for large \(n\).
         Because \(1/n^{2}\) converges, the target series converges as well.
 
 \end{itemize}
 
-%---------------------- Additional Worked Examples ----------------------
 \subsection*{Practice Examples with Answer Guides}
 
 \begin{enumerate}[label=\textbf{\arabic*.},itemsep=14pt]
 
-%------------------ Example 1 ------------------------------------------
-\item \textbf{Limit Comparison (log numerator)}  
+\item \textbf{Limit Comparison (log numerator)}
       \[
       \sum_{n=2}^{\infty}\frac{\ln n}{n^{2}}
       \]
@@ -491,8 +473,7 @@ If that happens, the two series share the same fate.
       This still satisfies the Limit-Comparison condition (finite, non-zero in reverse).
       Since \(\sum 1/n^{2}\) converges, so does the target series.
 
-%------------------ Example 2 ------------------------------------------
-\item \textbf{Limit Comparison (linear over quadratic)}  
+\item \textbf{Limit Comparison (linear over quadratic)}
       \[
       \sum_{n=1}^{\infty} \frac{n}{n^{2}+5n}
       \]
@@ -504,11 +485,10 @@ If that happens, the two series share the same fate.
       =\lim_{n\to\infty}\frac{n^{2}}{n^{2}+5n}=1.
       \]
 
-      Finite, non-zero ratio \(L=1\).  
+      Finite, non-zero ratio \(L=1\).
       Because \(\sum 1/n\) diverges, the target series also diverges.
 
-%------------------ Example 3 ------------------------------------------
-\item \textbf{Direct Comparison (geometric style)}  
+\item \textbf{Direct Comparison (geometric style)}
       \[
       \sum_{n=1}^{\infty}\frac{3^{n}}{5^{n}+n}
       \]
@@ -528,17 +508,15 @@ If that happens, the two series share the same fate.
 \subsection*{Key Points}
 \begin{itemize}[itemsep=4pt]
   \item Choose a benchmark series you already understand (often a \(p\)-series or geometric).
-  \item Direct Comparison = clear smaller / larger inequality.  
+  \item Direct Comparison = clear smaller / larger inequality.
   \item Limit Comparison = long-run ratio is a finite positive constant.
 \end{itemize}
 
-
-%==================== 10.7  Alternating Series Test ====================
 \newpage
 \section{10.7 Alternating Series Test}
 
 \begin{tcolorbox}[colback=gray!8,colframe=black,title=Big-Idea (plain words)]
-A sign-flipping series 
+A sign-flipping series
 \[
 +\;-\;+\;-\;\dots
 \]
@@ -555,30 +533,29 @@ That’s the entire Alternating Series Test.
 
 \begin{itemize}[itemsep=10pt]
 
-  \item \textbf{Convergent:}\; \(1 - \dfrac12 + \dfrac13 - \dfrac14 + \dots\)  
+  \item \textbf{Convergent:}\; \(1 - \dfrac12 + \dfrac13 - \dfrac14 + \dots\)
         Terms \(1/n\) get smaller and go to zero = > converges.
 
-  \item \textbf{Divergent:}\; \(1 - 1 + 1 - 1 + \dots\)  
+  \item \textbf{Divergent:}\; \(1 - 1 + 1 - 1 + \dots\)
         Terms stay at 1 = > do not shrink  = > diverges.
 
 \end{itemize}
 
-%--- More Examples -----------------------------------------------------
 \subsection*{More Short Examples}
 
 \begin{itemize}[itemsep=10pt]
 
   \item \textbf{Convergent:}\;
-        \(\displaystyle \frac{1}{2} - \frac{1}{4} + \frac{1}{6} - \frac{1}{8} + \dots\)  
+        \(\displaystyle \frac{1}{2} - \frac{1}{4} + \frac{1}{6} - \frac{1}{8} + \dots\)
         Here \(b_n = 1/(2n)\).  These numbers halve their size each step and
         approach 0 => convergent.
 
   \item \textbf{Convergent (log in denominator):}\;
-        \(\displaystyle \frac{1}{\ln 2} - \frac{1}{2\ln 3} + \frac{1}{3\ln 4} - \dots\)  
+        \(\displaystyle \frac{1}{\ln 2} - \frac{1}{2\ln 3} + \frac{1}{3\ln 4} - \dots\)
         \(b_n = 1\!\big/\!\bigl(n\ln(n+1)\bigr)\) decreases and goes to 0 => convergent.
 
   \item \textbf{Fails condition (not decreasing):}\;
-        \(\displaystyle 1 - \frac{1}{2} + 1 - \frac{1}{2} + 1 - \frac{1}{2} + \dots\)  
+        \(\displaystyle 1 - \frac{1}{2} + 1 - \frac{1}{2} + 1 - \frac{1}{2} + \dots\)
         The positive part takes turns being 1 then \(1/2\); it does \emph{not}
         keep shrinking => test cannot confirm convergence (series diverges).
 
@@ -593,7 +570,6 @@ After you stop at term \(N\), your error is no bigger than the size of the first
 \fbox{\(|\text{error}| \le b_{N+1}\)}
 \end{center}
 
-%==================== 10.8  Ratio Test for Convergence ====================
 \newpage
 \section{10.8 Ratio Test}
 
@@ -622,22 +598,22 @@ L = 1 &\;\Longrightarrow\; \text{test is inconclusive}
 
 \begin{itemize}[itemsep=10pt]
 
-  \item \textbf{Factorials in the top}  
+  \item \textbf{Factorials in the top}
         \(\displaystyle\sum \frac{n!}{10^{\,n}}\)
 
         Ratio \(= (n+1)/10 \rightarrow 0 < 1\) = > convergent.
 
-  \item \textbf{Exponential in the top}  
+  \item \textbf{Exponential in the top}
         \(\displaystyle\sum \frac{3^{\,n}}{n!}\)
 
         Ratio \(= 3/(n+1)\rightarrow 0 < 1\) = > convergent.
 
-  \item \textbf{Powers only}  
+  \item \textbf{Powers only}
         \(\displaystyle\sum \bigl(\tfrac{3}{2}\bigr)^{n}\)
 
         Ratio \(= 3/2 > 1\) = > divergent.
 
-  \item \textbf{Borderline case}  
+  \item \textbf{Borderline case}
         \(\displaystyle\sum \frac{1}{n}\)
 
         Ratio \(= (n)/(n+1)\rightarrow 1\).  Test inconclusive (indeed the harmonic series diverges, but not by this test).
@@ -652,7 +628,6 @@ L = 1 &\;\Longrightarrow\; \text{test is inconclusive}
   \item Works for absolute values as well, so it can confirm absolute convergence on alternating series.
 \end{itemize}
 
-%==================== 10.9  Absolute vs Conditional Convergence ====================
 \newpage
 \section{10.9 Absolute vs Conditional Convergence}
 
@@ -669,39 +644,35 @@ Absolute convergence automatically guarantees ordinary convergence.
 
 \subsection*{How to Decide (two steps)}
 \begin{enumerate}[itemsep=2pt]
-  \item Test \(\displaystyle\sum |a_n|\).  
+  \item Test \(\displaystyle\sum |a_n|\).
         If it converges → you are done (absolute).
-  \item If \(\sum |a_n|\) diverges, test \(\sum a_n\) with any tool you like  
-        (Alternating-Series Test, Comparison, etc.).  
+  \item If \(\sum |a_n|\) diverges, test \(\sum a_n\) with any tool you like
+        (Alternating-Series Test, Comparison, etc.).
         Convergent → conditional. Divergent → no convergence at all.
 \end{enumerate}
 
-%------------------------------------------------------------
 \subsection*{Examples}
 
 \begin{enumerate}[label=\textbf{\arabic*.},itemsep=12pt]
 
-  % --- Example 1 : absolute convergent ---
-  \item \textbf{Absolute Convergence}  
+  \item \textbf{Absolute Convergence}
         \(\displaystyle\sum_{n=1}^{\infty} \frac{(-1)^{n}}{n^{2}}\)
 
-        \(|a_n| = 1/n^{2}\) gives a \(p\)-series with \(p=2>1\)  = > convergent.  
+        \(|a_n| = 1/n^{2}\) gives a \(p\)-series with \(p=2>1\)  = > convergent.
         Therefore the original series is \emph{absolutely} convergent.
 
-  % --- Example 2 : conditional ---
-  \item \textbf{Conditional Convergence}  
+  \item \textbf{Conditional Convergence}
         \(\displaystyle\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n}\) (alternating harmonic)
 
-        \textbf{Absolute check:} \(\sum 1/n\) diverges.  
-        \textbf{Alternating-Series Test:} terms \(1/n\) decrease to 0 = > original series converges.  
+        \textbf{Absolute check:} \(\sum 1/n\) diverges.
+        \textbf{Alternating-Series Test:} terms \(1/n\) decrease to 0 = > original series converges.
         Result: \emph{conditionally} convergent.
 
-  % --- Example 3 : no convergence ---
-  \item \textbf{Divergent in Both Senses}  
+  \item \textbf{Divergent in Both Senses}
         \(\displaystyle\sum_{n=1}^{\infty} \frac{(-1)^{n} n}{n+1}\)
 
-        \(|a_n| = n/(n+1) \to 1\) so \(\sum |a_n|\) diverges (terms don’t go to 0).  
-        Original series also fails the nth-term test (terms do not approach 0).  
+        \(|a_n| = n/(n+1) \to 1\) so \(\sum |a_n|\) diverges (terms don’t go to 0).
+        Original series also fails the nth-term test (terms do not approach 0).
         Result: diverges outright.
 
 \end{enumerate}
@@ -713,12 +684,11 @@ Absolute convergence automatically guarantees ordinary convergence.
   \item If \(\sum |a_n|\) diverges, you must test \(\sum a_n\) separately.
 \end{itemize}
 
-%==================== 10.10  Alternating Series Error Bound ====================
 \newpage
 \section{10.10 Alternating Series Error Bound}
 
 \begin{tcolorbox}[colback=gray!8,colframe=black,title=Error Bound (Leibniz)]
-For a convergent alternating series  
+For a convergent alternating series
 \[
 \sum_{n=1}^{\infty}(-1)^{\,n-1} b_n,
 \quad b_{n+1}\le b_n,\; b_n\to 0,
@@ -733,10 +703,9 @@ where
 
 \subsection*{Interpretation}
 The next unused term is an upper bound on how far your partial sum
-can stray from the true sum.  
+can stray from the true sum.
 No additional calculation is required.
 
-%------------------------------------------------------------
 \subsection*{Example}
 
 Approximate
@@ -766,7 +735,6 @@ Thus the four-term estimate is within \(0.2\) of the exact value.
   \item Increasing \(N\) tightens the bound automatically.
 \end{itemize}
 
-%==================== 10.11  Finding Taylor Polynomial Approximations ====================
 \newpage
 \section{10.11 Finding Taylor Polynomial Approximations}
 
@@ -815,15 +783,12 @@ If you graph \(e^x\) and this polynomial together, they overlap closely near \(x
 \subsection*{Key Vocabulary}
 Taylor polynomial, center, degree, approximation, Maclaurin series, derivative
 
-
-
-%==================== 10.12  Lagrange Error Bound ====================
 \newpage
 \section{10.12 Lagrange Error Bound}
 
 \begin{tcolorbox}[colback=gray!8,colframe=black,title=Big-Idea (Plain Words)]
-Taylor polynomials are great for estimating functions.  
-The Lagrange Error Bound tells us: \textbf{how good that estimate is.}  
+Taylor polynomials are great for estimating functions.
+The Lagrange Error Bound tells us: \textbf{how good that estimate is.}
 It gives a limit on how far off our answer might be.
 \end{tcolorbox}
 
@@ -839,11 +804,11 @@ Where:
   \item \(|x - a|\) is the distance from your center.
 \end{itemize}
 
-This bound says: “Your answer is off by less than this number.”  
+This bound says: “Your answer is off by less than this number.”
 Smaller \(x - a\)? Smaller error. More terms? Smaller error.
 
 \begin{tcolorbox}[colback=gray!6,colframe=black,title=Think of it like this:]
-You're driving a curve with a straight line.  
+You're driving a curve with a straight line.
 Lagrange tells you how far off the road you might drift.
 \end{tcolorbox}
 
@@ -877,15 +842,11 @@ Use the error formula with:
   \item Just plug into the formula to find how close you are
 \end{itemize}
 
-
-
-%==================== 10.13 Radius and Interval of Convergence ====================
-
 \newpage
 \section{10.13 Radius and Interval of Convergence}
 
 \begin{tcolorbox}[colback=gray!8,colframe=black,title=Big Idea (How I like to understand this)]
-When we write a power series, like a long polynomial that keeps going forever, it doesn’t work for all values of \(x\) obviously.  
+When we write a power series, like a long polynomial that keeps going forever, it doesn’t work for all values of \(x\) obviously.
 Instead, it only (converges) for a certain zone around a center point. That zone is called:
 \begin{itemize}
   \item The \textbf{radius of convergence} – how far out from the center the series works.
@@ -905,7 +866,7 @@ This is just a fancy way to say:
 c_0 + c_1(x - a) + c_2(x - a)^2 + c_3(x - a)^3 + \cdots
 \]
 
-It’s centered at \(x = a\), and it behaves nicely (converges) only for some values of \(x\) close to that center.  
+It’s centered at \(x = a\), and it behaves nicely (converges) only for some values of \(x\) close to that center.
 We’re trying to find:
 - How far does it work? → \textbf{Radius}
 - Where does it work? → \textbf{Interval}
@@ -921,8 +882,8 @@ We usually use the \textbf{Ratio Test} to figure this out:
 
 \begin{tcolorbox}[colback=gray!10,colframe=black,title=Plain Rules]
 \begin{itemize}
-  \item If \( |x - a| < R \), the series converges 
-  \item If \( |x - a| > R \), the series diverges 
+  \item If \( |x - a| < R \), the series converges
+  \item If \( |x - a| > R \), the series diverges
   \item If \( |x - a| = R \), it might converge... or not. You gotta to plug in and check!
 \end{itemize}
 \end{tcolorbox}
@@ -934,6 +895,162 @@ We usually use the \textbf{Ratio Test} to figure this out:
   \item That zone is centered at some number and has a certain radius.
   \item To know exactly where it works, use the Ratio Test and always test the endpoints.
 \end{itemize}
+
+%==================== 10.14 Finding Taylor & Maclaurin Series ====================
+\newpage
+\section{10.14 Finding Taylor or Maclaurin Series}
+
+\begin{tcolorbox}[colback=gray!8,colframe=black,title=Big Idea – Rewriting Functions as Polynomials]
+I'd defnertly say that some functions are tricky to work with (like \( \sin x \), \( e^x \), or \( \ln(1 + x) \)). But what if we could turn them into infinite polynomials?
+
+That’s what a \textbf{Taylor series} does — it builds a polynomial that behaves just like the original function near a point \( a \).
+
+If we center it at \( a = 0 \), we call it a **Maclaurin Series** (just a Taylor series at zero).
+\end{tcolorbox}
+
+\subsection*{The Blueprint (How to Build One)}
+
+\begin{itemize}
+  \item Step 1: Take a bunch of derivatives of the function.
+  \item Step 2: Plug in your center point \( a \) (often 0).
+  \item Step 3: Plug into the formula:
+  \[
+  f(x) = f(a) + f'(a)(x - a) + \frac{f''(a)}{2!}(x - a)^2 + \cdots
+  \]
+\end{itemize}
+
+\vspace{4pt}
+\noindent
+We usually write it as:
+\[
+\boxed{
+f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n
+}
+\]
+
+\subsection*{Example 1: Maclaurin Series for \( \sin x \)}
+
+Let’s center at \( a = 0 \). Here’s the derivative pattern:
+\[
+\sin x,\; \cos x,\; -\sin x,\; -\cos x,\; \text{repeat...}
+\]
+
+Now evaluate at 0:
+\[
+\sin(0)=0,\quad \cos(0)=1,\quad -\sin(0)=0,\quad -\cos(0)=-1
+\]
+
+That gives us:
+\[
+\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots
+\]
+
+ \textbf{Only the odd powers show up}, and the signs alternate.
+
+\subsection*{Example 2: \( e^x \) (the easiest one!)}
+
+Every derivative is just... \( e^x \), and \( e^0 = 1 \).
+
+So:
+\[
+e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
+\]
+
+Swear this series always works — for all \( x \).
+
+\subsection*{Example 3: Bonus – \( \ln(1 + x) \)}
+
+\[
+\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots
+\]
+Valid for \( -1 < x \le 1 \). Another alternating series!
+
+\subsection*{What to Remember}
+\begin{itemize}
+  \item Taylor series are like power-up polynomials that mimic real functions near a point.
+  \item You build them using derivatives at that point.
+  \item Maclaurin is just the special case at \( x = 0 \).
+  \item These series are super useful for approximations — calculators use them, too!
+\end{itemize}
+
+%==================== 10.15 Representing Functions as Power Series ====================
+\newpage
+\section{10.15 Representing Functions as Power Series}
+
+\begin{tcolorbox}[colback=gray!8,colframe=black,title=Big Idea – Turn a Function into an Infinite Polynomial!]
+Doing my research this stuff is mostly just tweaking things in \( \frac{1}{1 - x} \), \( e^x \), \( \sin x \), etc.)
+\end{tcolorbox}
+
+\subsection*{The Classic Starting Point}
+The **geometric series** is your essentially like a swiss army knife:
+\[
+\frac{1}{1 - x} = \sum_{n=0}^{\infty} x^n \quad \text{for } |x| < 1
+\]
+
+Now you can modify this to build other functions!
+
+---
+
+\subsection*{Example 1: Represent \( \frac{1}{1 + x} \) as a series}
+
+Start from:
+\[
+\frac{1}{1 - x} = \sum x^n
+\]
+
+Substitute \( -x \) in place of \( x \):
+\[
+\frac{1}{1 + x} = \sum_{n=0}^{\infty} (-x)^n = 1 - x + x^2 - x^3 + \cdots
+\]
+
+ Works for \( |x| < 1 \)
+
+---
+
+\subsection*{Example 2: Represent \( \frac{x}{1 - x^2} \)}
+
+Use the fact:
+\[
+\frac{1}{1 - x} = \sum x^n
+\]
+
+Substitute \( x^2 \) instead of \( x \):
+\[
+\frac{1}{1 - x^2} = \sum x^{2n}
+\]
+
+Then multiply both sides by \( x \):
+\[
+\frac{x}{1 - x^2} = \sum x^{2n+1} = x + x^3 + x^5 + \cdots
+\]
+
+ Still converges for \( |x| < 1 \)
+
+---
+
+\subsection*{Example 3: Represent \( \ln(1 - x) \)}
+
+This is a known one:
+\[
+\ln(1 - x) = -\sum_{n=1}^{\infty} \frac{x^n}{n}
+\quad\text{(for } |x| < 1\text{)}
+\]
+
+You can remember this one starts at \( n=1 \) and has the alternating-like minus.
+
+---
+
+\subsection*{Tips to Make Your Life Easier}
+\begin{itemize}
+  \item Start with a known series (like \( \frac{1}{1 - x} \), \( e^x \), or \( \ln(1 + x) \))
+  \item Plug in a new expression like \( 2x \), \( x^2 \), or \( -x \)
+  \item Multiply if needed
+  \item Write out a few terms and match patterns!
+\end{itemize}
+
+\begin{tcolorbox}[colback=blue!5,colframe=blue!80!black,title=Bonus Tip]
+Never saw this on the AP but you could study for it.
+\end{tcolorbox}
 
 
 \end{document}
